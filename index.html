@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learning & Development — Business Case</title>
+<meta name="description" content="dentsu Data & Technology — Learning & Development business case form for training, certification, conference, course or coaching approval.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#21212B; --body:#2C2C3A; --grey:#60607B; --blue:#076CDF;
+    --light:#F7F7F8; --lighter:#EEEEF1; --border:#DEDEE4; --white:#fff;
+    --success:#257F4E; --success-bg:#E2F8EC;
+    --font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--lighter);color:var(--body);font-family:var(--font);
+    -webkit-font-smoothing:antialiased;line-height:1.5}
+  .wrap{max-width:840px;margin:0 auto;padding:28px 18px 120px}
+
+  /* header */
+  .brand{font-weight:800;font-size:20px;color:var(--ink);letter-spacing:-.01em}
+  .eyebrow-band{font-size:12px;font-weight:700;color:var(--grey);letter-spacing:.18em;
+    text-transform:uppercase;padding-bottom:10px;border-bottom:3px solid var(--blue);margin-bottom:22px}
+  h1{font-size:38px;line-height:1.05;font-weight:800;color:var(--ink);margin:6px 0 2px;letter-spacing:-.02em}
+  .subtitle{font-size:20px;font-weight:700;color:var(--blue);margin:0 0 14px}
+  .intro{font-size:15px;color:var(--body);max-width:64ch;margin:0 0 8px}
+
+  /* card */
+  .card{background:var(--white);border:1px solid var(--border);border-radius:12px;
+    padding:22px 22px 24px;margin-top:16px;box-shadow:0 1px 2px rgba(33,33,43,.04)}
+  .sec-head{display:flex;align-items:baseline;gap:10px;margin:0 0 4px}
+  .sec-num{font-size:13px;font-weight:700;color:var(--blue);background:var(--lighter);
+    border-radius:6px;padding:2px 8px;letter-spacing:.02em}
+  .sec-title{font-size:18px;font-weight:700;color:var(--ink)}
+  .sec-hint{font-size:13.5px;color:var(--grey);font-style:italic;margin:6px 0 14px;max-width:70ch}
+  .prompts{margin:0 0 14px;padding-left:18px}
+  .prompts li{font-size:13px;color:var(--grey);font-style:italic;margin:3px 0}
+
+  /* fields */
+  label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin:14px 0 5px}
+  label .req{color:var(--blue);font-weight:700;margin-left:2px}
+  .hint{font-weight:400;color:var(--grey);font-style:italic}
+  input[type=text],input[type=number],select,textarea{
+    width:100%;font-family:var(--font);font-size:14px;color:var(--body);background:var(--white);
+    border:1px solid var(--border);border-radius:8px;padding:10px 12px;transition:border-color .12s,box-shadow .12s}
+  textarea{resize:vertical;min-height:96px;line-height:1.55}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);
+    box-shadow:0 0 0 3px rgba(7,108,223,.14)}
+  select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2360607B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 12px center;padding-right:38px;cursor:pointer}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+  @media(max-width:560px){.grid2{grid-template-columns:1fr}}
+
+  /* costs table */
+  table.costs{width:100%;border-collapse:collapse;margin-top:8px;font-size:13.5px}
+  table.costs th{background:var(--ink);color:var(--white);font-weight:600;text-align:left;
+    padding:10px 12px;font-size:12.5px}
+  table.costs th:last-child,table.costs td:last-child{text-align:right}
+  table.costs td{border-bottom:1px solid var(--border);padding:6px 10px;vertical-align:middle}
+  table.costs tr:nth-child(even) td{background:var(--light)}
+  .cost-amt{max-width:150px;margin-left:auto;text-align:right}
+  .cost-note{width:100%}
+  table.costs td.lbl{color:var(--body)}
+  tr.total td{background:var(--lighter)!important;font-weight:700;color:var(--ink);
+    border-top:2px solid var(--border);font-size:14.5px}
+  .aud{white-space:nowrap}
+
+  /* toolbar */
+  .toolbar{position:sticky;bottom:0;left:0;right:0;margin-top:24px;
+    background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
+    border:1px solid var(--border);border-radius:12px;padding:12px 14px;
+    display:flex;gap:10px;flex-wrap:wrap;align-items:center;box-shadow:0 4px 16px rgba(33,33,43,.08)}
+  .toolbar .spacer{flex:1}
+  .totline{font-size:13px;color:var(--grey);font-weight:500}
+  .totline b{color:var(--ink);font-weight:700;font-size:15px}
+  button.btn{font-family:var(--font);font-size:13.5px;font-weight:600;border-radius:8px;
+    padding:10px 16px;cursor:pointer;border:1px solid var(--border);background:var(--white);color:var(--ink);
+    transition:background .12s,border-color .12s,transform .04s}
+  button.btn:hover{background:var(--light)}
+  button.btn:active{transform:translateY(1px)}
+  button.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+  button.btn.primary:hover{background:#0660c8}
+  .toast{position:fixed;left:50%;bottom:88px;transform:translateX(-50%) translateY(12px);
+    background:var(--success-bg);color:var(--success);border:1px solid var(--success);
+    font-size:13px;font-weight:600;padding:9px 16px;border-radius:999px;opacity:0;pointer-events:none;
+    transition:opacity .2s,transform .2s;z-index:50}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .footnote{margin-top:22px;padding-top:12px;border-top:1px solid var(--border);
+    font-size:12px;color:var(--grey)}
+
+  /* print */
+  @media print{
+    body{background:#fff}
+    .wrap{max-width:none;padding:0}
+    .toolbar,.toast{display:none!important}
+    .card{box-shadow:none;border:1px solid #d8d8de;break-inside:avoid;page-break-inside:avoid}
+    input,select,textarea{border:1px solid #d8d8de!important;box-shadow:none!important}
+    select{background-image:none;padding-right:12px}
+    @page{margin:14mm}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="brand">dentsu</div>
+  <div class="eyebrow-band">Data &amp; Technology</div>
+  <h1>Learning &amp; Development</h1>
+  <p class="subtitle">Business case for training or development</p>
+  <p class="intro">Use this form to request approval for training, a certification, conference, course or coaching. A strong case connects the investment to your role, to the business, and to the Data &amp; Technology team. Fill it in, then print to PDF, copy it for email, or download it as a Word document to send for approval.</p>
+
+  <!-- Requester -->
+  <div class="card">
+    <div class="sec-head"><span class="sec-title">Your details</span></div>
+    <div class="grid2">
+      <div><label>Name<span class="req">*</span></label><input type="text" id="f_name"></div>
+      <div><label>Role / job title<span class="req">*</span></label><input type="text" id="f_role"></div>
+    </div>
+    <div class="grid2">
+      <div>
+        <label>Pillar<span class="req">*</span></label>
+        <select id="f_pillar">
+          <option value="" selected disabled>Select…</option>
+          <option>Strategy &amp; Analytics</option>
+          <option>Engineering</option>
+          <option>Digital Operations</option>
+          <option>Product</option>
+        </select>
+      </div>
+      <div><label>Line manager<span class="req">*</span></label><input type="text" id="f_manager"></div>
+    </div>
+    <div class="grid2">
+      <div><label>Date of request</label><input type="text" id="f_date" placeholder="dd/mm/yyyy"></div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- What -->
+  <div class="card">
+    <div class="sec-head"><span class="sec-title">What you are requesting</span></div>
+    <div class="grid2">
+      <div><label>Programme / course name<span class="req">*</span></label><input type="text" id="f_prog"></div>
+      <div><label>Provider</label><input type="text" id="f_provider"></div>
+    </div>
+    <div class="grid2">
+      <div>
+        <label>Type</label>
+        <select id="f_type">
+          <option value="" selected disabled>Select…</option>
+          <option>Course</option><option>Certification</option><option>Conference</option>
+          <option>Workshop</option><option>Coaching</option><option>Self-paced</option>
+        </select>
+      </div>
+      <div>
+        <label>Format</label>
+        <select id="f_format">
+          <option value="" selected disabled>Select…</option>
+          <option>In person</option><option>Virtual</option><option>Hybrid</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid2">
+      <div><label>Proposed dates</label><input type="text" id="f_dates"></div>
+      <div><label>Total duration <span class="hint">e.g. 3 days, 6 weeks part-time</span></label><input type="text" id="f_duration"></div>
+    </div>
+  </div>
+
+  <!-- 1 -->
+  <div class="card">
+    <div class="sec-head"><span class="sec-num">1</span><span class="sec-title">Relevance to your role</span></div>
+    <div class="sec-hint">Explain how this connects to what you do day to day. Be specific about the skills it builds and the work it will directly improve.</div>
+    <ul class="prompts">
+      <li>What part of your role does this develop?</li>
+      <li>What can you not do well enough today that this addresses?</li>
+      <li>How soon would you apply it, and to which work or clients?</li>
+    </ul>
+    <textarea id="f_role_case"></textarea>
+  </div>
+
+  <!-- 2 -->
+  <div class="card">
+    <div class="sec-head"><span class="sec-num">2</span><span class="sec-title">Contribution to the business</span></div>
+    <div class="sec-hint">Set out the return dentsu gets from this investment. Connect it to commercial outcomes, client value, quality, speed or risk where you can.</div>
+    <ul class="prompts">
+      <li>What business outcome does this support (revenue, margin, delivery quality, client retention, risk)?</li>
+      <li>Does it help win, grow or protect a client relationship? Name it if so.</li>
+      <li>What is the cost of not doing it?</li>
+    </ul>
+    <textarea id="f_biz_case"></textarea>
+  </div>
+
+  <!-- 3 -->
+  <div class="card">
+    <div class="sec-head"><span class="sec-num">3</span><span class="sec-title">Contribution to the Data &amp; Technology team</span></div>
+    <div class="sec-hint">Describe how this strengthens the team and the wider practice, not just you. Strong cases build capability that others benefit from.</div>
+    <ul class="prompts">
+      <li>Which capability gap in the team or pillar does this help close?</li>
+      <li>How will you share what you learn (write-up, session, template, mentoring)?</li>
+      <li>Does it support a team priority, a new service, or a platform or tooling direction?</li>
+    </ul>
+    <textarea id="f_team_case"></textarea>
+  </div>
+
+  <!-- 4 -->
+  <div class="card">
+    <div class="sec-head"><span class="sec-num">4</span><span class="sec-title">Outcomes and measures of success</span></div>
+    <div class="sec-hint">Say what will be true after the training that is not true now, and how you and your manager will know it worked.</div>
+    <ul class="prompts">
+      <li>What will you be able to do or produce that you cannot today?</li>
+      <li>How will the outcome be measured or evidenced?</li>
+      <li>By when?</li>
+    </ul>
+    <textarea id="f_outcomes"></textarea>
+  </div>
+
+  <!-- 5 costs -->
+  <div class="card">
+    <div class="sec-head"><span class="sec-num">5</span><span class="sec-title">Costs</span></div>
+    <div class="sec-hint">List all costs, including anything beyond the headline fee. Use estimates where exact figures are not yet known and note the assumption.</div>
+    <table class="costs">
+      <thead><tr><th>Cost item</th><th>Estimated cost (AUD)</th><th style="text-align:left">Notes / assumptions</th></tr></thead>
+      <tbody>
+        <tr><td class="lbl">Course / programme / conference fee</td>
+            <td><input class="cost-amt cost" type="number" min="0" step="1" id="c_fee" placeholder="0"></td>
+            <td style="text-align:left"><input class="cost-note" type="text" id="n_fee"></td></tr>
+        <tr><td class="lbl">Certification or exam fee</td>
+            <td><input class="cost-amt cost" type="number" min="0" step="1" id="c_cert" placeholder="0"></td>
+            <td style="text-align:left"><input class="cost-note" type="text" id="n_cert"></td></tr>
+        <tr><td class="lbl">Travel</td>
+            <td><input class="cost-amt cost" type="number" min="0" step="1" id="c_travel" placeholder="0"></td>
+            <td style="text-align:left"><input class="cost-note" type="text" id="n_travel"></td></tr>
+        <tr><td class="lbl">Accommodation</td>
+            <td><input class="cost-amt cost" type="number" min="0" step="1" id="c_accom" placeholder="0"></td>
+            <td style="text-align:left"><input class="cost-note" type="text" id="n_accom"></td></tr>
+        <tr><td class="lbl">Materials, software or licences</td>
+            <td><input class="cost-amt cost" type="number" min="0" step="1" id="c_mat" placeholder="0"></td>
+            <td style="text-align:left"><input class="cost-note" type="text" id="n_mat"></td></tr>
+        <tr><td class="lbl">Other</td>
+            <td><input class="cost-amt cost" type="number" min="0" step="1" id="c_other" placeholder="0"></td>
+            <td style="text-align:left"><input class="cost-note" type="text" id="n_other" placeholder="specify"></td></tr>
+        <tr class="total"><td>Total estimated cost</td><td class="aud" id="totalCell">A$0</td><td></td></tr>
+      </tbody>
+    </table>
+    <label style="margin-top:18px">Time commitment <span class="hint">working time away from delivery, plus any cover needed</span></label>
+    <textarea id="f_time" style="min-height:64px"></textarea>
+  </div>
+
+  <div class="footnote">dentsu &nbsp;|&nbsp; Data &amp; Technology &nbsp;|&nbsp; Learning &amp; Development business case</div>
+
+  <div class="toolbar">
+    <div class="totline">Total: <b id="totalToolbar">A$0</b></div>
+    <div class="spacer"></div>
+    <button class="btn" onclick="copyForEmail()">Copy for email</button>
+    <button class="btn" onclick="downloadWord()">Download as Word</button>
+    <button class="btn primary" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const AUD = new Intl.NumberFormat('en-AU',{style:'currency',currency:'AUD',maximumFractionDigits:0});
+  const $ = id => document.getElementById(id);
+  const costIds = ['c_fee','c_cert','c_travel','c_accom','c_mat','c_other'];
+
+  function recalc(){
+    let t = 0;
+    costIds.forEach(id => { const v = parseFloat($(id).value); if(!isNaN(v)) t += v; });
+    const s = AUD.format(t).replace('$','$'); // A$ style handled by en-AU
+    $('totalCell').textContent = s;
+    $('totalToolbar').textContent = s;
+  }
+  document.querySelectorAll('.cost').forEach(el => el.addEventListener('input', recalc));
+  recalc();
+
+  function toast(msg){
+    const t = $('toast'); t.textContent = msg; t.classList.add('show');
+    clearTimeout(t._h); t._h = setTimeout(()=>t.classList.remove('show'), 1900);
+  }
+
+  const val = id => ($(id) && $(id).value || '').trim();
+
+  function buildRecord(){
+    const costRows = [
+      ['Course / programme / conference fee','c_fee','n_fee'],
+      ['Certification or exam fee','c_cert','n_cert'],
+      ['Travel','c_travel','n_travel'],
+      ['Accommodation','c_accom','n_accom'],
+      ['Materials, software or licences','c_mat','n_mat'],
+      ['Other','c_other','n_other'],
+    ];
+    let total = 0;
+    const costs = costRows.map(([label,c,n])=>{
+      const v = parseFloat(val(c)); const amt = isNaN(v)?0:v; total += amt;
+      return {label, amount:amt, note:val(n)};
+    });
+    return {
+      name:val('f_name'), role:val('f_role'), pillar:val('f_pillar'),
+      manager:val('f_manager'), date:val('f_date'),
+      prog:val('f_prog'), provider:val('f_provider'), type:val('f_type'),
+      format:val('f_format'), dates:val('f_dates'), duration:val('f_duration'),
+      roleCase:val('f_role_case'), bizCase:val('f_biz_case'),
+      teamCase:val('f_team_case'), outcomes:val('f_outcomes'),
+      costs, total, time:val('f_time')
+    };
+  }
+
+  function copyForEmail(){
+    const r = buildRecord();
+    const dash = s => s || '—';
+    const lines = [];
+    lines.push('LEARNING & DEVELOPMENT — BUSINESS CASE');
+    lines.push('dentsu | Data & Technology');
+    lines.push('');
+    lines.push('YOUR DETAILS');
+    lines.push('Name: '+dash(r.name));
+    lines.push('Role: '+dash(r.role));
+    lines.push('Pillar: '+dash(r.pillar));
+    lines.push('Line manager: '+dash(r.manager));
+    lines.push('Date: '+dash(r.date));
+    lines.push('');
+    lines.push('WHAT IS BEING REQUESTED');
+    lines.push('Programme: '+dash(r.prog));
+    lines.push('Provider: '+dash(r.provider));
+    lines.push('Type: '+dash(r.type)+'   Format: '+dash(r.format));
+    lines.push('Proposed dates: '+dash(r.dates)+'   Duration: '+dash(r.duration));
+    lines.push('');
+    lines.push('1. RELEVANCE TO YOUR ROLE');
+    lines.push(dash(r.roleCase));
+    lines.push('');
+    lines.push('2. CONTRIBUTION TO THE BUSINESS');
+    lines.push(dash(r.bizCase));
+    lines.push('');
+    lines.push('3. CONTRIBUTION TO THE DATA & TECHNOLOGY TEAM');
+    lines.push(dash(r.teamCase));
+    lines.push('');
+    lines.push('4. OUTCOMES AND MEASURES OF SUCCESS');
+    lines.push(dash(r.outcomes));
+    lines.push('');
+    lines.push('5. COSTS (AUD)');
+    r.costs.forEach(c=>{ lines.push('  - '+c.label+': '+AUD.format(c.amount)+(c.note?('  ('+c.note+')'):'')); });
+    lines.push('  TOTAL: '+AUD.format(r.total));
+    lines.push('Time commitment: '+dash(r.time));
+    const text = lines.join('\n');
+    const done = ()=>toast('Copied — paste into your email');
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(()=>fallbackCopy(text,done));
+    } else fallbackCopy(text,done);
+  }
+  function fallbackCopy(text,cb){
+    const ta=document.createElement('textarea');ta.value=text;
+    ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);
+    ta.select();try{document.execCommand('copy');cb();}catch(e){toast('Copy not supported here');}
+    document.body.removeChild(ta);
+  }
+
+  function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function para(s){return esc(s).replace(/\n/g,'<br>');}
+
+  function downloadWord(){
+    const r = buildRecord();
+    const dash = s => s ? para(s) : '&mdash;';
+    const kv = (k,v)=>'<tr><td class="k">'+k+'<\/td><td>'+(v?esc(v):'&mdash;')+'<\/td><\/tr>';
+    const sec = (n,t,body)=>'<h2><span class="num">'+n+'<\/span> '+t+'<\/h2><p class="ans">'+dash(body)+'<\/p>';
+    let costRows='';
+    r.costs.forEach(c=>{costRows+='<tr><td>'+esc(c.label)+'<\/td><td class="r">'+AUD.format(c.amount)+'<\/td><td>'+(c.note?esc(c.note):'')+'<\/td><\/tr>';});
+    costRows+='<tr class="tot"><td>Total estimated cost<\/td><td class="r">'+AUD.format(r.total)+'<\/td><td><\/td><\/tr>';
+
+    const html =
+'<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'+
+'<head><meta charset="utf-8"><title>L&D Business Case<\/title>'+
+'<style>'+
+'body{font-family:Inter,Calibri,Arial,sans-serif;color:#2C2C3A;font-size:11pt;line-height:1.45}'+
+'.brand{font-weight:800;font-size:14pt;color:#21212B}'+
+'.band{font-size:9pt;font-weight:700;color:#60607B;letter-spacing:2px;text-transform:uppercase;'+
+'border-bottom:2px solid #076CDF;padding-bottom:5px;margin-bottom:14px}'+
+'h1{font-size:24pt;color:#21212B;margin:4px 0 0}'+
+'.sub{font-size:13pt;color:#076CDF;font-weight:700;margin:0 0 14px}'+
+'h2{font-size:12pt;color:#21212B;border-bottom:1px solid #DEDEE4;padding-bottom:4px;margin:18px 0 6px}'+
+'.num{color:#076CDF}'+
+'.ans{white-space:pre-wrap;margin:0 0 4px}'+
+'table{border-collapse:collapse;width:100%;margin:6px 0 4px;font-size:10.5pt}'+
+'td,th{border:1px solid #DEDEE4;padding:6px 9px;vertical-align:top}'+
+'td.k{background:#EEEEF1;font-weight:700;color:#21212B;width:34%}'+
+'th{background:#21212B;color:#fff;text-align:left}'+
+'td.r{text-align:right;white-space:nowrap}'+
+'tr.tot td{background:#EEEEF1;font-weight:700;color:#21212B}'+
+'<\/style><\/head><body>'+
+'<div class="brand">dentsu<\/div><div class="band">Data &amp; Technology<\/div>'+
+'<h1>Learning &amp; Development<\/h1><div class="sub">Business case for training or development<\/div>'+
+'<h2>Your details<\/h2><table>'+
+kv('Name',r.name)+kv('Role / job title',r.role)+kv('Pillar',r.pillar)+kv('Line manager',r.manager)+kv('Date of request',r.date)+
+'<\/table>'+
+'<h2>What is being requested<\/h2><table>'+
+kv('Programme / course name',r.prog)+kv('Provider',r.provider)+kv('Type',r.type)+kv('Format',r.format)+kv('Proposed dates',r.dates)+kv('Total duration',r.duration)+
+'<\/table>'+
+sec('1','Relevance to your role',r.roleCase)+
+sec('2','Contribution to the business',r.bizCase)+
+sec('3','Contribution to the Data &amp; Technology team',r.teamCase)+
+sec('4','Outcomes and measures of success',r.outcomes)+
+'<h2><span class="num">5<\/span> Costs<\/h2>'+
+'<table><tr><th>Cost item<\/th><th>Estimated cost (AUD)<\/th><th>Notes / assumptions<\/th><\/tr>'+costRows+'<\/table>'+
+'<p class="ans"><b>Time commitment:<\/b> '+dash(r.time)+'<\/p>'+
+'<\/body><\/html>';
+
+    const blob = new Blob(['﻿',html],{type:'application/msword'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const who = (r.name||'request').replace(/[^a-z0-9]+/gi,'_');
+    a.href=url; a.download='LD_Business_Case_'+who+'.doc';
+    document.body.appendChild(a); a.click();
+    setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);},400);
+    toast('Word document downloaded');
+  }
+</script>
+</body>
+</html>
